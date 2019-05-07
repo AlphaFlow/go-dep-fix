@@ -20,7 +20,7 @@ BUILD_DIR=${GOPATH}/src/github.com/${GITHUB_USER}
 LDFLAGS=-ldflags="-X main.version=${VERSION}-mod-patched"
 
 # Build the project
-all: ${GO_HOST} install-${GO_HOST}
+all: ${GO_HOST}
 
 build: ${GO_HOST}
 
