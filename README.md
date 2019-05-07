@@ -15,7 +15,7 @@ prompt> cd $GOPATH
 prompt> mkdir -p src/github.com/alphaflow
 prompt> cd src/github.com/alphaflow
 prompt> git clone https://github.com/AlphaFlow/go-dep-fix.git
-prompt> cd git-dep-fix
+prompt> cd go-dep-fix
 prompt> make && make install
 ```
 
