@@ -33,7 +33,6 @@ darwin:
 	GOOS=darwin GOARCH=${GO_ARCH} go build ${LDFLAGS} -o ${BINARY}-darwin-${GO_ARCH} ./cmd/dep ; \
 	cd - >/dev/null
 
-# git clone https://github.com/golang/dep.git ${BUILD_DIR}/${REPO} ;`
 linux:
 	rm -rf ${BUILD_DIR}/${REPO} ; \
 	git clone ${REPO_URL} ${BUILD_DIR}/${REPO} ; \
@@ -46,7 +45,6 @@ linux:
 install: install-${GO_HOST}
 
 install-darwin: darwin
-	pushd . ; \
 	cd ${BUILD_DIR}/${REPO} ; \
 	cp ${BINARY}-darwin-${GO_ARCH} /usr/local/bin ; \
 	chown ${USER}:admin /usr/local/bin/${BINARY}-darwin-${GO_ARCH} ; \
