@@ -10,8 +10,14 @@ where `dep ensure` will fail when encountering a proxy that returns a __mod__ VC
 The Makefile will determine your platform and architecture from existing Golang configuration values. Therefore, all you
 need to do is:
 
-- clone the repo
-- run make && make install
+```bash
+prompt> cd $GOPATH
+prompt> mkdir -p src/github.com/alphaflow
+prompt> cd src/github.com/alphaflow
+prompt> git clone https://github.com/AlphaFlow/go-dep-fix.git
+prompt> cd git-dep-fix
+prompt> make && make install
+```
 
 Then use `dep ensure` as usual.
 
