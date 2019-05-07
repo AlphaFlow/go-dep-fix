@@ -30,7 +30,7 @@ darwin:
 	cp mod_patch.patch ${BUILD_DIR}/${REPO} ; \
 	cd ${BUILD_DIR}/${REPO} ; \
 	git am mod_patch.patch ; \
-	GOOS=darwin GOARCH=${GO_ARCH} go build -ldflags ${LDFLAGS} -o ${BINARY}-darwin-${GO_ARCH} ./cmd/dep ; \
+	GOOS=darwin GOARCH=${GO_ARCH} go build ${LDFLAGS} -o ${BINARY}-darwin-${GO_ARCH} ./cmd/dep ; \
 	cd - >/dev/null
 
 # git clone https://github.com/golang/dep.git ${BUILD_DIR}/${REPO} ;`
@@ -49,7 +49,7 @@ install-darwin: darwin
 	pushd . ; \
 	cd ${BUILD_DIR}/${REPO} ; \
 	cp ${BINARY}-darwin-${GO_ARCH} /usr/local/bin ; \
-	chown root:root /usr/local/bin/${BINARY}-darwin-${GO_ARCH} ; \
+	chown ${USER}:admin /usr/local/bin/${BINARY}-darwin-${GO_ARCH} ; \
 	chmod 755 /usr/local/bin/${BINARY}-darwin-${GO_ARCH} ; \
 	ln -sf /usr/local/bin/${BINARY}-darwin-${GO_ARCH} /usr/local/bin/${BINARY} ; \
 	ln -sf /usr/local/bin/${BINARY}-linux-${GO_ARCH} ${GOPATH}/bin/${BINARY} ; \
