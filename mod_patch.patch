@@ -1,0 +1,26 @@
+From 806b15094b99f26bba2cb05674cec60c1014fe72 Mon Sep 17 00:00:00 2001
+From: Mark Eissler <mark@bunker5.com>
+Date: Mon, 6 May 2019 14:54:51 -0700
+Subject: [PATCH] Patch discovery to ignore VCS mod type.
+
+---
+ gps/discovery.go | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/gps/discovery.go b/gps/discovery.go
+index 8da4a66d..cce38d46 100644
+--- a/gps/discovery.go
++++ b/gps/discovery.go
+@@ -62,6 +62,10 @@ func parseMetaGoImports(r io.Reader) (imports []metaImport, err error) {
+ 			continue
+ 		}
+ 		if f := strings.Fields(attrValue(e.Attr, "content")); len(f) == 3 {
++			// Ignore VCS type "mod", which is applicable only in module mode.
++			if f[1] == "mod" {
++				continue
++			}
+ 			imports = append(imports, metaImport{
+ 				Prefix:   f[0],
+ 				VCS:      f[1],
+-- 
+2.21.0
